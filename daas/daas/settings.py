@@ -23,9 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#ge=xf99nvr_s$sp3w5wl@5iu4dl@nyc3ml3r+s0-3tn25znws'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG_STR = os.environ.get("APP_DEBUG", "0").lowercase()
+DEBUG = (
+    DEBUG_STR == "0" or
+    DEBUG_STR == "true"
+)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("APP_HOSTNAME", "*").split(",")
 
 
 # Application definition

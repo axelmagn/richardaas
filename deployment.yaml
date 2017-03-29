@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: daas-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: daas
+    spec:
+      containers:
+        - name: daas-app
+          image: daas:v0.0.1
+          ports:
+            - containerPort: 80
